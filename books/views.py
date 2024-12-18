@@ -12,6 +12,8 @@ class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     permission_classes = [IsAdminUser]
+    filter_backends = [filters.SearchFilter]
+    search_files = ['title', 'genre', 'author_name']
 
     def get_queryset(self):
         queryset = super().get_queryset()
